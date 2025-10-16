@@ -1,0 +1,7 @@
+
+[Python 3.7](https://www.python.org/downloads/) or later.
+pytest>=7.4.4
+anyio>=4.2.0
+rich>=13.5.2
+
+
