@@ -1,8 +1,9 @@
 
 import sys
 import os
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import pytest
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+from storage import load_json
 from analytics import (
     list_all_habits,
     filter_by_periodicity,
@@ -53,3 +54,12 @@ def test_happiest_pet():
     p2.happiness = 60
     result = happiest_pet([p1, p2])
     assert result.startswith("Whiskers 😺")
+
+def test_fixture_data_load():
+    """Ensure analytics works with sample JSON data."""
+    habits = load_json("data/habit.json")
+    assert len(habits) >= 5
+
+    names = list_all_habits(habits)
+    assert isinstance(names, list)
+    print("\n Fixture data loaded successfully with habits:", names)

@@ -5,10 +5,7 @@ from datetime import datetime, timedelta
 from typing import List, Optional
 
 class Habit:
-    """
-    Represents a user-defined habit with periodicity and completion tracking.
-    """
-
+    """ Represents a user-defined habit with periodicity and completion tracking. """
     def __init__(self, name: str, periodicity: str, pet_name: str, description: str):
         self.name = name
         self.periodicity = periodicity.lower()  # 'hourly', 'daily', 'weekly', 'monthly'
@@ -18,19 +15,13 @@ class Habit:
         self.checkoffs: List[datetime] = []
 
     def add_checkoff(self, date: Optional[datetime] = None):
-        """
-        Records a habit completion. Only one checkoff per habit period(daily/weekly/hourly) is allowed.
-        """
-
+        """ Records a habit completion. Only one checkoff per habit period(daily/weekly/hourly) is allowed. """
         date = date or datetime.now()
         if not self.already_checked(date):
             self.checkoffs.append(date)
 
     def already_checked(self, date:datetime) -> bool:
-        """
-        Checks if a habit was already completed for the given period.
-        """
-
+        """ Checks if a habit was already completed for the given period. """
         for d in self.checkoffs:
             if self.periodicity == "hourly" and d.hour == date.hour and d.date() == date.date():
                 return True
@@ -43,10 +34,7 @@ class Habit:
         return False
     
     def current_streak(self) -> int:
-        """
-        Calculates the current streak based on consecutive completions.
-        """
-
+        """ Calculates the current streak based on consecutive completions. """
         if not self.checkoffs:
             return 0
         sorted_dates = sorted(set(self.normalized_dates()), reverse=True)
@@ -59,10 +47,7 @@ class Habit:
         return streak
     
     def longest_streak(self) -> int:
-        """
-        Calculates the longest streak from all checkoffs.
-        """
-
+        """ Calculates the longest streak from all checkoffs. """
         if not self.checkoffs:
             return 0
         sorted_dates = sorted(set(self.normalized_dates()))
@@ -76,10 +61,7 @@ class Habit:
         return longest
     
     def normalized_dates(self) -> List[datetime]:
-        """
-        Normalizes checkoff timestamps to the start of their respective periods.
-        """
-
+        """ Normalizes checkoff timestamps to the start of their respective periods. """
         normalized = []
         for dt in self.checkoffs:
             if self.periodicity == "hourly":
@@ -94,10 +76,7 @@ class Habit:
         return normalized
     
     def is_consecutive(self, d1: datetime, d2: datetime) -> bool:
-        """
-        Checks if two normalized dates are consecutive based on the periodicity.
-        """
-
+        """ Checks if two normalized dates are consecutive based on the periodicity. """
         if self.periodicity == "hourly":
             return (d2 - d1) == timedelta(hours=1)
         elif self.periodicity == "daily":
@@ -110,10 +89,7 @@ class Habit:
         return False
     
     def to_dict(self) -> dict:
-        """
-        Serializes the habit to a dictionary for JSON storage.
-        """
-
+        """ Serializes the habit to a dictionary for JSON storage. """
         return {
             "name": self.name,
             "periodicity": self.periodicity,
@@ -125,10 +101,7 @@ class Habit:
     
     @staticmethod
     def from_dict(data: dict) -> "Habit":
-        """
-        Deserializes a habit from a dictionary.
-        """
-        
+        """ Deserializes a habit from a dictionary. """
         habit = Habit(
             name=data["name"],
             periodicity=data["periodicity"],

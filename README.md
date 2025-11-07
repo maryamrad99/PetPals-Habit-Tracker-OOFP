@@ -1,15 +1,15 @@
 
 # 🐾 PetPals Habit Tracker App 🐾
 
-A Python-based CLI habit tracker that gamifies building habits with virtual pets.  
-Each habit is paired with a pet: completing habits increases your pet’s happiness and XP, while missing habits lowers happiness and breaks streaks.
+A **Python-based CLI habit tracker** that gamifies building habits with virtual pets.  
+Each habit is paired with a pet — completing habits increases your pet’s happiness and XP, while missing habits lowers happiness and breaks streaks.
 
 ---
 
 ## What is PetPals?
 
-PetPals is a command-line application written in Python using object-oriented design.  
-It helps users build consistent habits while caring for virtual pets.
+PetPals is a **command-line application** written in **Python** using **object-oriented design (OOP)**.  
+It helps users stay consistent with their daily or weekly habits while having virtual pets that grow as does your progress.
 
 ### Features
 - Create, complete, and delete habits
@@ -38,7 +38,7 @@ It helps users build consistent habits while caring for virtual pets.
 
 3. **Run the CLI app:**
    ```bash
-   python3 -m petpals.cli
+   python3 cli.py
    ```
 
 4.  Use the menu options to: 
@@ -52,5 +52,20 @@ It helps users build consistent habits while caring for virtual pets.
    ```bash
    pytest -q
    ```
+Tests include:
+- Habit streak calculations
+- Pet happiness and leveling system
+- Analytics (filtering, longest streak, happiest pet)
+- Data persistence (save/load JSON)
 
 ---
+
+## Technologies Used
+- Language: Python 3.12
+- Libraries: *pytest, json, datetime, os, random*
+- Storage: JSON files (for habits, pets, and events)
+- Paradigm: Object-Oriented Programming (OOP)
+- Interface: Command-Line Interface (CLI)
+- Testing: Automated with *pytest*
+
+--- 

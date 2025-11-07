@@ -7,7 +7,6 @@ class Pet:
     """ 
     Represents a virtual pet linked to a habit. Tracks happiness, experience, and level.
     """
-
     def __init__(self, species: str, nickname: str, emoji: str):
         self.species = species
         self.nickname = nickname
@@ -18,21 +17,18 @@ class Pet:
 
     def update_on_completion(self):
         """ Boosts pet stats when a habit is completed. """
-
         self.happiness = min(100, self.happiness + 5)  
         self.experience += 10
         self.check_level_up()
 
     def update_on_failure(self):
         """ Decreases pet stats when a habit is failed to complete during its time period. """
-
         self.happiness = max(0, self.happiness - 10)
         self.experience = max(0, self.experience - 5)
         self.check_level_up()
 
     def check_level_up(self):
         """ Levels up the pet based on the experience points. """
-
         required_xp = self.level * 50  # Ex: Level 1 to level 2 requires 50 XP, level 2 to 3 requires 100 XP, etc.
         if self.experience >= required_xp:
             self.level += 1
@@ -40,7 +36,6 @@ class Pet:
 
     def mood(self) -> str:
         """ Returns a mood description based on happiness score. """
-
         if self.happiness >= 80:
             return "Joyful 😄!"
         elif self.happiness >= 50:
@@ -64,7 +59,6 @@ class Pet:
     @staticmethod
     def from_dict(data: dict) -> "Pet":
         """ Deserializes a pet from a dictionary. """
-        
         pet = Pet(
             species = data["species"],
             nickname = data["nickname"],
