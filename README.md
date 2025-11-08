@@ -13,42 +13,62 @@ It helps users stay consistent with their daily or weekly habits while having vi
 
 ### Features
 - Create, complete, and delete habits
-- Choose a pet emoji (🐱 🐰 🦖 🐶 🐸) to pair with each habit
-- Track streaks and pet happiness
+- Assign a pet (emoji:🐱 🐰 🦖 🐶 🐸) to each habit; pets gain XP, happiness, and levels
+- Track streaks and pet happiness with a leaderboard
 - Level up pets with experience points
 - View analytics like:
   - Longest streak overall
   - Happiest pet
+  - Filter by periodicity
 - All data saved in JSON for persistence
+- Both CLI (cli.py) and GUI (gui.py) frontends
+- Unit tested with pytest
 
 ---
 
 ## Installation & Running
 
-1. **Install dependencies**
+1. **Clone the repo:**
    ```bash
-   pip install -r requirements.txt
+   git clone https://github.com/maryamrad99/PetPals-Habit-Tracker-OOFP.git
+   cd PetPals-Habit-Tracker-OOFP
    ```
 
 2. **Create and activate a virtual environment:**
+- macOS/Linux: 
    ```bash
    python3 -m venv env
    source env/bin/activate
    ```
-
-3. **Run the CLI app:**
+- Windows: 
    ```bash
-   python3 cli.py
+   python -m venv env
+   .\env\Scripts\Activate.ps1
    ```
 
-4.  Use the menu options to: 
+3. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Run the CLI app:**
+   ```bash
+   python cli.py
+   ```
+ Use the menu options to: 
    - Add a new habit with a pet
    - Complete habits to increase streaks and pet happiness
    - View streaks and analytics
    - Remove habits
    
+or 
 
-5. **Run the test:**
+5. **Run GUI:**
+   ```bash
+   python gui.py
+   ```
+
+6. **Run the test:**
    ```bash
    pytest -q
    ```
