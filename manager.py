@@ -1,5 +1,5 @@
 
-# HabitManager with CRUD, streaks, and persistence
+# HabitManager with streaks and persistence
 
 import os
 import json
